@@ -50,7 +50,7 @@ class Concentration{
                         cards[index].isMatched = true
                         score += postiveScore
                     }else{
-                        score += negativeScore
+                        score = (score + negativeScore) >= 0 ? score + negativeScore :0
                     }
                     
                     cards[index].isFaceUp = true
