@@ -45,18 +45,18 @@ class ViewController: UIViewController {
     }
     
     // lazy(cant have did set) to allow the usage of an unintialized value in an intializer
-    lazy var game=Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
+    private lazy var game=Concentration(numberOfPairsOfCards: numberOfPairsOfCards)
     
-    var numberOfPairsOfCards:Int{
+    private var numberOfPairsOfCards:Int{
         return (cardButtons.count+1)/2
     }
     
-    func updateScore(){
+    private func updateScore(){
         scoreLabel.text = "Score: \(game.score)"
         
     }
     
-    func updateFlipCountLable() {
+    private func updateFlipCountLable() {
         let attributes: [NSAttributedString.Key : Any] = [
             .backgroundColor: #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1),
             NSAttributedString.Key.foregroundColor : UIColor.black,
@@ -67,7 +67,7 @@ class ViewController: UIViewController {
         
     }
     
-    func resetView(){
+    private func resetView(){
         game.resetAllCards()
         for index in cardButtons.indices{
             let button = cardButtons[index]
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateViewFromModel(){
+    private func updateViewFromModel(){
         for index in cardButtons.indices{
             let button = cardButtons[index]
             let card = game.cards[index]
@@ -93,9 +93,9 @@ class ViewController: UIViewController {
         updateScore()
     }
     
-    var emojis = [Card:String]()
+    private var emojis = [Card:String]()
     
-    func getEmoji(for card:Card)->String{
+    private func getEmoji(for card:Card)->String{
         if emojis[card] == nil , game.currentTheme.count>0{
             
             let randomIndex = game.currentTheme.count.randomNumber

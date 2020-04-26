@@ -10,12 +10,12 @@ import Foundation
 class Concentration{
     var cards:[Card] = [Card]()
     var score = 0
-    var flipCount = 0
-    let postiveScore = 2
-    let negativeScore = -2
-    var theme = Theme()
+    private(set) var flipCount = 0
+    private let postiveScore = 2
+    private let negativeScore = -2
+    private var theme = Theme()
     var currentTheme:[String] = [String]()
-    var indexCurrentFaceUpCard:Int?{
+    private var indexCurrentFaceUpCard:Int?{
         get{
             return  cards.indices.filter{cards[$0].isFaceUp}.oneAndOnly
         }
